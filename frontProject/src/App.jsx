@@ -46,7 +46,11 @@ function App() {
     }
   }
 
-  let listaId = users.map((user) => console.log(user._id))
+  //let listaId = users.map((user) => console.log(user._id))
+  
+  function idSearch(x){
+    console.log(x)
+  }
 
   return (
     <div className='container'>
@@ -73,7 +77,7 @@ function App() {
         {showElement ?
           <ul>
             {users.map(user => (
-              <li key={user.name}>Nome: {user.name} - Idade: {user.age} - <button>DELETE</button> {user._id}</li>
+              <li key={user.name}>Nome: {user.name} - Idade: {user.age} - <button onClick={idSearch(users._id)}>DELETE</button></li>
             ))}
           </ul>
           : null
