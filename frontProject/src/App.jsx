@@ -46,7 +46,16 @@ function App() {
     }
   }
 
-  //let listaId = users.map((user) => console.log(user._id))
+  const handleDelete = (id) => {
+  
+    server.delete(`/usuarios/${id}`).then(response => {
+      console.log('Usuario deletado com sucesso:', response.data);
+    }).catch(error => {
+      console.error('Erro ao deletar:', error)
+    })
+    console.log(id)
+
+  };
   
   
 
@@ -75,7 +84,7 @@ function App() {
         {showElement ?
           <ul>
             {users.map(user => (
-              <li key={user.name}>Nome: {user.name} - Idade: {user.age} - <button onClick={idSearch()}>DELETE</button></li>
+              <li key={user.name}>Nome: {user.name} - Idade: {user.age} - <button onClick={() => handleDelete(user._id)}>DELETE</button></li>
             ))}
           </ul>
           : null

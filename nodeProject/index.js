@@ -33,3 +33,13 @@ app.post('/usuarios', async function (request, response) {
   return response.json(newUser)
 });
 
+app.delete('/usuarios/:id', async function (request, response){
+ 
+  const id = request.params.id
+  console.log(id)
+
+  await Users.findByIdAndDelete({_id: id})
+
+  return response.status(200).json({ response: "Usuario deletado"})
+  
+})
